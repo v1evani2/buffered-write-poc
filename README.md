@@ -38,9 +38,6 @@ This starts Redis, Zookeeper, Kafka, and Oracle XE with schema + seed user.
 
   mvn -q exec:java -Dexec.mainClass=com.example.buffered.LoginServer
 
-Default mode is REDIS_KAFKA.
-Set LOGIN_MODE=DB_ONLY to bypass Redis/Kafka and use DB directly.
-
 ## Run Async DB Writer
 
 In another terminal:
