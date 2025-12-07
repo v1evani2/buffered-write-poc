@@ -20,17 +20,21 @@ The **request path never writes to Oracle** – all writes are buffered through 
   - The single-threaded consumer model
 This is exactly how large systems solve the scaling problem. DB row versioning is only needed if the DB itself is participating in concurrency.
 
-In this architecture:
+A resilient, conflict-free pipeline for handling high-volume concurrent login attempts:
+Concurrent Login Attempts
+        │
+        ▼
+ Redis Atomic Counters
+        │
+        ▼
+ Kafka Serialized Events
+        │
+        ▼
+ DB Writer (Single Consumer)
+        │
+        ▼
+ Oracle UPDATE (No Conflict)
 
-Concurrent login attempts
-      ↓
-Redis atomic counters
-      ↓
-Kafka serialized events
-      ↓
-DB writer single consumer
-      ↓
-Oracle UPDATE (no conflict)
 
 
 ## Prereqs
