@@ -83,4 +83,4 @@ Status:
 
 You should see Redis counters go up, user lock flag set, and eventually DB lock status updated by the async writer.
 
-
+JMeter sample test scripts included to show the solution works under the concurrent load testing as well.
