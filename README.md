@@ -1,4 +1,4 @@
-# Buffered Write Demo – Mode 2 (Redis + Kafka + Oracle)
+# Buffered Write Demo – Redis + Kafka + Oracle
 
 This repo demonstrates a realistic **buffered write** pattern for login lockout:
 
