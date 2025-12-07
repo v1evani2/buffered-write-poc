@@ -14,10 +14,13 @@ This repo demonstrates a realistic **buffered write** pattern for login lockout:
   - Updates `USERS.LOCK_STATUS = 'LOCKED'`.
   - Inserts into `LOCKOUT_EVENTS`.
 
+## Architecture quick view
+
 The **request path never writes to Oracle** – all writes are buffered through Kafka. Buffered write architecture moved the concurrency control out of the DB and into:
   - Redis atomic increments
   - Kafka’s ordered log
   - The single-threaded consumer model
+
 DB row versioning is only needed if the DB itself is participating in concurrency.
 
 A resilient, conflict-free pipeline for handling high-volume concurrent login attempts:
@@ -36,8 +39,6 @@ Concurrent Login Attempts
         ▼
  Oracle UPDATE (No Conflict)
 ```
-
-
 ## Prereqs
 
 - Java 17+
